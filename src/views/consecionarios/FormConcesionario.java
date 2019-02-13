@@ -37,7 +37,7 @@ public class FormConcesionario extends javax.swing.JFrame {
         selectTaxi.setModel(model);
         if(Comun.isEditing){
             btnAction.setText("Guardar Cambios");
-            labelTitle.setText("Editar Titular");
+            labelTitle.setText("Editar Concesionario");
             jTextField1.setText(Comun.selectedTitular.getNombre());
             jTextField2.setText(Comun.selectedTitular.getApellido());
             jTextField3.setText(Comun.selectedTitular.getDireccion());
@@ -45,7 +45,7 @@ public class FormConcesionario extends javax.swing.JFrame {
             
         }else{
             btnAction.setText("Guardar");
-            labelTitle.setText("Nuevo Titular");
+            labelTitle.setText("Nuevo Concesionario");
             
         }
     }
@@ -192,7 +192,7 @@ public class FormConcesionario extends javax.swing.JFrame {
                 System.out.println("IDTAXI---->"+ id_taxi);
                 String query = " insert into users (first_name, last_name, date_created, is_admin, num_points)"
         + " values (?, ?, ?, ?, ?)";
-                String goodQuery = "INSERT INTO duenocarro (nombre,apellido,direccion,telefono,idtipo,idtaxi,clavesindical) "
+                String goodQuery = "INSERT INTO titularplacas (nombre,apellido,direccion,telefono,idtipo,idtaxi,clavesindical) "
                         + "VALUES (?,?,?,?,?,?,?)";
       // create the mysql insert preparedstatement
                 PreparedStatement preparedStmt;

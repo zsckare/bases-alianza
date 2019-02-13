@@ -206,6 +206,19 @@ public class ConectionDB {
             }
      
         }
+        if(bd==2){
+            
+                     String query = "delete from titularplacas where idtitularplacas = ?";
+            PreparedStatement preparedStmt;
+            try {
+                preparedStmt = cn.prepareStatement(query);
+                preparedStmt.setInt(1, id);
+                preparedStmt.execute();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(ConectionDB.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         
     }
           

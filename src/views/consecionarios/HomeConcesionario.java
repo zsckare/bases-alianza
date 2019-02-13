@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import models.Concesionario;
 import models.Titular;
 import views.LoginPAge;
 
@@ -37,7 +38,7 @@ DefaultTableModel model;
         model.addColumn("Tipo de Sangre");
         model.addColumn("Vehiculo");
         model.addColumn("Clave Sindical");
-        this.setTitle("Lista de Marcas");
+        this.setTitle("Lista de Concesionarios");
         setData();
     }
 
@@ -52,8 +53,8 @@ DefaultTableModel model;
             }
             jTable1.setModel(model);
         }
-        for (int i = 0; i < Comun.titulares.size(); i++) {
-            Titular t = Comun.titulares.get(i);
+        for (int i = 0; i < Comun.concesionarios.size(); i++) {
+            Concesionario t = Comun.concesionarios.get(i);
             System.out.println(t.toString());
             model.addRow(new Object[]{t.getNombre(),t.getApellido(), t.getDireccion(), t.getTelefono(), t.getIdtipo(), t.getVehiculo().getNumerotaxi(), t.getClavesindical()});
             
@@ -193,7 +194,8 @@ DefaultTableModel model;
         }else{
             
                 System.out.println("Conexion Exitosa");
-                cDB.deleteInDB(Comun.titulares.get(row).getIdduenocarro(), 1);
+                cDB.deleteInDB(Comun.concesionarios.get(row).getIdtitularplacas(), 2);
+                Comun.concesionarios.remove(row);
                 this.dispose();
                 new HomeConcesionario().setVisible(true);
             

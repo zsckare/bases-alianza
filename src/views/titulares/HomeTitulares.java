@@ -37,7 +37,7 @@ DefaultTableModel model;
         model.addColumn("Tipo de Sangre");
         model.addColumn("Vehiculo");
         model.addColumn("Clave Sindical");
-        this.setTitle("Lista de Marcas");
+        this.setTitle("Lista de Titulares");
         setData();
     }
 
