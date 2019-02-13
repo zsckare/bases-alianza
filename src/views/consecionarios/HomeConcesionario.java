@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package views.titulares;
+package views.consecionarios;
 
 import helpers.Comun;
 import helpers.ConectionDB;
@@ -20,12 +20,12 @@ import views.LoginPAge;
  *
  * @author zsckare
  */
-public class HomeTitulares extends javax.swing.JFrame {
+public class HomeConcesionario extends javax.swing.JFrame {
 DefaultTableModel model;
     /**
      * Creates new form HomeTitulares
      */
-    public HomeTitulares() {
+    public HomeConcesionario() {
         initComponents();
         
         model = new DefaultTableModel();
@@ -79,7 +79,6 @@ DefaultTableModel model;
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(720, 480));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -167,7 +166,7 @@ DefaultTableModel model;
         // TODO add your handling code here:
         this.dispose();
         Comun.isEditing = false;
-        new FormTitular().setVisible(true);
+        new FormConcesionario().setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -196,7 +195,7 @@ DefaultTableModel model;
                 System.out.println("Conexion Exitosa");
                 cDB.deleteInDB(Comun.titulares.get(row).getIdduenocarro(), 1);
                 this.dispose();
-                new HomeTitulares().setVisible(true);
+                new HomeConcesionario().setVisible(true);
             
         }
         }
@@ -219,20 +218,21 @@ DefaultTableModel model;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HomeTitulares.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeConcesionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HomeTitulares.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeConcesionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HomeTitulares.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeConcesionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HomeTitulares.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeConcesionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HomeTitulares().setVisible(true);
+                new HomeConcesionario().setVisible(true);
             }
         });
     }

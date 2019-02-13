@@ -13,8 +13,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import views.titulares.FormTitular;
-import views.titulares.HomeTitulares;
 
 /**
  *
@@ -146,7 +144,7 @@ public class FormMarcas extends javax.swing.JFrame {
                     cDB.getMarcas();
                     new HomeMarcas().setVisible(true);
                 } catch (SQLException ex) {
-                    Logger.getLogger(FormTitular.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(FormMarcas.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
             }

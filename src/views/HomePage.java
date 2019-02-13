@@ -6,7 +6,7 @@
 package views;
 import views.titulares.*;
 import views.marcas.*;
-import views.vehiculos.HomeVehiculos;
+import views.vehiculos.*;
 /**
  *
  * @author zsckare

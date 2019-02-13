@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import views.marcas.HomeMarcas;
-import views.titulares.FormTitular;
+
 
 /**
  *
@@ -166,7 +166,7 @@ public class FormVehiculo extends javax.swing.JFrame {
                     cDB.getVehiculos();
                     new HomeVehiculos().setVisible(true);
                 } catch (SQLException ex) {
-                    Logger.getLogger(FormTitular.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(FormVehiculo.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
             }
