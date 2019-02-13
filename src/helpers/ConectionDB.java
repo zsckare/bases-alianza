@@ -139,7 +139,7 @@ public class ConectionDB {
             Comun.titulares.add(titular);
         }
         
-        System.out.println(Comun.titulares);
+       // System.out.println(Comun.titulares);
      }     
     public void getTipoSangre(){        
     }
@@ -185,6 +185,8 @@ public class ConectionDB {
         
     }
     public void deleteInDB(int id, int bd) {
+        System.out.println("Eliminar-->");
+        System.out.println(id);
         if(bd ==1){
             String query = "delete from duenocarro where idduenocarro = ?";
             PreparedStatement preparedStmt;

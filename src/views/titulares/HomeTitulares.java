@@ -6,8 +6,15 @@
 package views.titulares;
 
 import helpers.Comun;
+import helpers.ConectionDB;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import models.Titular;
+import views.LoginPAge;
 
 /**
  *
@@ -71,7 +78,7 @@ DefaultTableModel model;
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(720, 480));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -93,12 +100,27 @@ DefaultTableModel model;
         jButton2.setMaximumSize(new java.awt.Dimension(69, 23));
         jButton2.setMinimumSize(new java.awt.Dimension(69, 23));
         jButton2.setPreferredSize(new java.awt.Dimension(69, 23));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Eliminar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Editar");
 
         jButton5.setText("Nuevo");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,6 +161,46 @@ DefaultTableModel model;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        Comun.isEditing = false;
+        new FormTitular().setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+         String inputFile = "C:/Users/zsckare/Desktop/base.html";
+    String outputFile = "C:/Users/zsckare/Desktop/Test.pdf";
+
+    Comun.generatePDF(inputFile, outputFile);
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+        // TODO add your handling code here:
+        int row = jTable1.getSelectedRow();
+        System.out.println(row);
+        int con = JOptionPane.showConfirmDialog(this, "¿Desea Eliminar este registro?");
+        if(con == 0){
+   ConectionDB cDB = new ConectionDB();
+        Connection cn = cDB.connect();
+        if(cn == null){
+            System.out.println("Fallo Conexion");
+            JOptionPane.showMessageDialog(this, "Ha Ocurrido un error al conectarse a la base de datos,\n verifique que el servidor este activo", "Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+            
+                System.out.println("Conexion Exitosa");
+                cDB.deleteInDB(Comun.titulares.get(row).getIdduenocarro(), 1);
+                Comun.titulares.remove(row);
+                this.dispose();
+                new HomeTitulares().setVisible(true);
+            
+        }
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
