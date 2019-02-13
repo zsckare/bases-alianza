@@ -194,7 +194,6 @@ DefaultTableModel model;
             
                 System.out.println("Conexion Exitosa");
                 cDB.deleteInDB(Comun.titulares.get(row).getIdduenocarro(), 1);
-                Comun.titulares.remove(row);
                 this.dispose();
                 new HomeTitulares().setVisible(true);
             

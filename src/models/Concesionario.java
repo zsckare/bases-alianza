@@ -12,7 +12,16 @@ package models;
 public class Concesionario {
      int idtitularplacas, idtipo, idtaxi;
     String nombre, apellido, direccion, telefono, clavesindical;
+    Taxi vehiculo;
 
+    public Taxi getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Taxi vehiculo) {
+        this.vehiculo = vehiculo;
+    }
+    
     public int getIdtitularplacas() {
         return idtitularplacas;
     }

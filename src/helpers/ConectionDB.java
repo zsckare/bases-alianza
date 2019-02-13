@@ -102,17 +102,23 @@ public class ConectionDB {
         ResultSet rs = st.executeQuery(query);
         
         while(rs.next()){   
+            Concesionario titular = new Concesionario();
             
-            /*Chofer t = new Chofer();
-            t.setIdtaxista(rs.getInt(1));
-            t.setNombre(rs.getString(2));
-            t.setApellido(rs.getString(3));
-            t.setDireccion(rs.getString(4));
-            t.setTelefono(rs.getString(5));
             
-            Comun.choferes.add(t);
-*/
+            titular.setIdtitularplacas(rs.getInt(1));
+            titular.setNombre(rs.getString(2));
+            titular.setApellido(rs.getString(3));
+            titular.setDireccion(rs.getString(4));
+            titular.setTelefono(rs.getString(5));
+            titular.setIdtaxi(rs.getInt(7));
+            titular.setIdtipo(rs.getInt(6));
+            titular.setClavesindical(rs.getString(8));
+            titular.setVehiculo(getVehicle(rs.getInt(7)));
+            
+            Comun.concesionarios.add(titular);
+
         }
+        System.out.println(Comun.concesionarios);
             
      }    
     public void getTitulares() throws SQLException{
