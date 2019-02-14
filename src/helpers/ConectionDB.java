@@ -44,6 +44,8 @@ public class ConectionDB {
         getConcesionaros();
         
         
+        System.out.println("TERMINADO REQUEST BD");
+        
         
     }
     public void getUsers() throws SQLException{
@@ -63,7 +65,7 @@ public class ConectionDB {
             Comun.trabajadores.add(t);
         }
         
-        System.out.println(Comun.trabajadores);
+        //System.out.println(Comun.trabajadores);
         st.close();
         
         
@@ -91,7 +93,7 @@ public class ConectionDB {
 
         }
         
-        System.out.println(Comun.choferes);
+        //System.out.println(Comun.choferes);
         st.close();
         
     }
@@ -118,7 +120,7 @@ public class ConectionDB {
             Comun.concesionarios.add(titular);
 
         }
-        System.out.println(Comun.concesionarios);
+        //System.out.println(Comun.concesionarios);
             
      }    
     public void getTitulares() throws SQLException{
@@ -187,7 +189,7 @@ public class ConectionDB {
             Comun.vehiculos.add(taxi);
         }
         
-        System.out.println(Comun.vehiculos);
+        //System.out.println(Comun.vehiculos);
         
     }
     public void deleteInDB(int id, int bd) {
@@ -209,6 +211,20 @@ public class ConectionDB {
         if(bd==2){
             
                      String query = "delete from titularplacas where idtitularplacas = ?";
+            PreparedStatement preparedStmt;
+            try {
+                preparedStmt = cn.prepareStatement(query);
+                preparedStmt.setInt(1, id);
+                preparedStmt.execute();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(ConectionDB.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+                if(bd==3){
+            
+                     String query = "delete from taxis where idtaxi = ?";
             PreparedStatement preparedStmt;
             try {
                 preparedStmt = cn.prepareStatement(query);

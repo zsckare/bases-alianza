@@ -6,8 +6,12 @@
 package views.vehiculos;
 
 import helpers.Comun;
+import helpers.ConectionDB;
+import java.sql.Connection;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import models.*;
+import views.titulares.HomeTitulares;
 
 /**
  *
@@ -64,6 +68,11 @@ DefaultTableModel model;
         jButton1.setText("Buscar");
 
         jButton2.setText("Eliminar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Editar");
 
@@ -115,6 +124,29 @@ DefaultTableModel model;
         this.dispose();
         new FormVehiculo().setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+       int row = jTable1.getSelectedRow();
+        System.out.println(row);
+        int con = JOptionPane.showConfirmDialog(this, "¿Desea Eliminar este registro?");
+        if(con == 0){
+        ConectionDB cDB = new ConectionDB();
+        Connection cn = cDB.connect();
+        if(cn == null){
+            System.out.println("Fallo Conexion");
+            JOptionPane.showMessageDialog(this, "Ha Ocurrido un error al conectarse a la base de datos,\n verifique que el servidor este activo", "Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+            
+                System.out.println("Conexion Exitosa");
+                cDB.deleteInDB(Comun.vehiculos.get(row).getIdtaxi(), 3);
+                Comun.vehiculos.remove(row);
+                this.dispose();
+                new HomeVehiculos().setVisible(true);
+            
+        }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,7 +206,7 @@ DefaultTableModel model;
         }
         for (int i = 0; i < Comun.vehiculos.size(); i++) {
             Taxi t = Comun.vehiculos.get(i);
-            System.out.println(t.toString());
+            //System.out.println(t.toString());
             model.addRow(new Object[]{t.getNumerotaxi(),t.getNumeroplaca(),t.getIdmarca()});
             
         }

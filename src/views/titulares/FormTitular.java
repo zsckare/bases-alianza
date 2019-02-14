@@ -189,6 +189,17 @@ public class FormTitular extends javax.swing.JFrame {
             }else{
                 String index_taxi = selectTaxi.getSelectedItem().toString();
                 int id_taxi = returnIdTaxi(index_taxi);
+                int indexTipo = jComboBox1.getSelectedIndex();
+                int tipoo = 0;
+                if(indexTipo ==0){
+                    tipoo = 1;
+                }
+                if(indexTipo==1){
+                    tipoo = 2;
+                }
+                if(indexTipo==2){
+                    tipoo = 3;
+                }
                 System.out.println("IDTAXI---->"+ id_taxi);
                 String query = " insert into users (first_name, last_name, date_created, is_admin, num_points)"
         + " values (?, ?, ?, ?, ?)";
@@ -204,7 +215,7 @@ public class FormTitular extends javax.swing.JFrame {
                     System.out.print(direccionn);
                     preparedStmt.setString(3, direccionn);
                     preparedStmt.setString(4, jTextField4.getText().toString().toUpperCase());
-                    preparedStmt.setInt(5, 1);
+                    preparedStmt.setInt(5, tipoo);
                     preparedStmt.setInt(6,id_taxi);
                     preparedStmt.setString(7, jTextField5.getText().toString().toUpperCase());
 

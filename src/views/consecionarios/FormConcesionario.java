@@ -190,8 +190,18 @@ public class FormConcesionario extends javax.swing.JFrame {
                 String index_taxi = selectTaxi.getSelectedItem().toString();
                 int id_taxi = returnIdTaxi(index_taxi);
                 System.out.println("IDTAXI---->"+ id_taxi);
-                String query = " insert into users (first_name, last_name, date_created, is_admin, num_points)"
-        + " values (?, ?, ?, ?, ?)";
+                int indexTipo = jComboBox1.getSelectedIndex();
+                int tipoo = 0;
+                if(indexTipo ==0){
+                    tipoo = 1;
+                }
+                if(indexTipo==1){
+                    tipoo = 2;
+                }
+                if(indexTipo==2){
+                    tipoo = 3;
+                }
+                System.out.println("selectedIndex"+indexTipo);
                 String goodQuery = "INSERT INTO titularplacas (nombre,apellido,direccion,telefono,idtipo,idtaxi,clavesindical) "
                         + "VALUES (?,?,?,?,?,?,?)";
       // create the mysql insert preparedstatement
@@ -204,7 +214,7 @@ public class FormConcesionario extends javax.swing.JFrame {
                     System.out.print(direccionn);
                     preparedStmt.setString(3, direccionn);
                     preparedStmt.setString(4, jTextField4.getText().toString().toUpperCase());
-                    preparedStmt.setInt(5, 1);
+                    preparedStmt.setInt(5, tipoo);
                     preparedStmt.setInt(6,id_taxi);
                     preparedStmt.setString(7, jTextField5.getText().toString().toUpperCase());
 
@@ -213,7 +223,7 @@ public class FormConcesionario extends javax.swing.JFrame {
                     preparedStmt.execute();
                     JOptionPane.showMessageDialog(this, "Se ha Guardado Correctamente");
                     this.dispose();
-                    cDB.getTitulares();
+                    cDB.getConcesionaros();
                     new HomeConcesionario().setVisible(true);
                 } catch (SQLException ex) {
                     Logger.getLogger(FormConcesionario.class.getName()).log(Level.SEVERE, null, ex);

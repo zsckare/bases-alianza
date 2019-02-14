@@ -5,7 +5,7 @@
  */
 package helpers;
 
-import com.itextpdf.text.DocumentException;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import javafx.scene.text.Text;
 import models.*;
-import org.xhtmlrenderer.pdf.ITextRenderer;
+
 
 /**
  *
@@ -33,25 +33,6 @@ public class Comun {
     //Editables
     public static Titular selectedTitular;
     
-    public static void generatePDF(String inputHtmlPath, String outputPdfPath)
-{
-    try {
-        String url = new File(inputHtmlPath).toURI().toURL().toString();
-        System.out.println("URL: " + url);
-
-        OutputStream out = new FileOutputStream(outputPdfPath);
-
-        //Flying Saucer part
-        ITextRenderer renderer = new ITextRenderer();
-
-        renderer.setDocument(url);
-        renderer.layout();
-        renderer.createPDF(out);
-
-        out.close();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+    public static void generatePDF(String inputHtmlPath, String outputPdfPath){
     }
 }

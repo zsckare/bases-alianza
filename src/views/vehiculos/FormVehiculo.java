@@ -64,7 +64,7 @@ public class FormVehiculo extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         actionBtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         titleLabel.setText("Agregar Vehiculo");
 
@@ -152,11 +152,13 @@ public class FormVehiculo extends javax.swing.JFrame {
                         + "VALUES (?,?,?)";
       // create the mysql insert preparedstatement
                 PreparedStatement preparedStmt;
+                int indexTipo = jComboBox1.getSelectedIndex();
+                int idMarca = Comun.marcas.get(indexTipo).getIdmarca();
                 try {
                     preparedStmt = cn.prepareStatement(goodQuery);
                     preparedStmt.setString(1, jTextField1.getText().toString().toUpperCase());
                     preparedStmt.setString(2, jTextField2.getText().toString().toUpperCase());
-                    preparedStmt.setInt(3,1);
+                    preparedStmt.setInt(3,idMarca);
 
 
                     // execute the preparedstatement

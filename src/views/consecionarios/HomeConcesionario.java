@@ -55,7 +55,7 @@ DefaultTableModel model;
         }
         for (int i = 0; i < Comun.concesionarios.size(); i++) {
             Concesionario t = Comun.concesionarios.get(i);
-            System.out.println(t.toString());
+            
             model.addRow(new Object[]{t.getNombre(),t.getApellido(), t.getDireccion(), t.getTelefono(), t.getIdtipo(), t.getVehiculo().getNumerotaxi(), t.getClavesindical()});
             
         }
