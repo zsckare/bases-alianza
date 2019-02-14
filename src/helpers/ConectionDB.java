@@ -43,6 +43,7 @@ public class ConectionDB {
         getChoferes();
         getTitulares();
         getConcesionaros();
+        getTipoSangre();
         
         
         System.out.println("TERMINADO REQUEST BD");
@@ -90,10 +91,12 @@ public class ConectionDB {
             t.setIdtaxi(rs.getInt(7));
             t.setClavesindical(rs.getString(8));
             t.setIdtipodesangre(rs.getInt(9));
+            t.setVehiculo(getVehicle(rs.getInt(7)));
+            t.setVehicle_number(getVehicle(rs.getInt(7)).getNumerotaxi());
             Comun.choferes.add(t);
 
         }
-        
+        Collections.sort(Comun.choferes, Chofer.TitualrVehicleNumner);
         //System.out.println(Comun.choferes);
         st.close();
         
@@ -152,7 +155,25 @@ public class ConectionDB {
         Collections.sort(Comun.titulares, Titular.TitualrVehicleNumner);
        // System.out.println(Comun.titulares);
      }     
-    public void getTipoSangre(){        
+    public void getTipoSangre()throws SQLException{   
+         if(!Comun.tipodesangre.isEmpty()){
+            Comun.tipodesangre.clear();
+        }
+          String query = "SELECT * FROM tiposangre";
+        
+        Statement st = cn.createStatement();
+        ResultSet rs = st.executeQuery(query);
+        
+        while(rs.next()){   
+            
+            TipoSangre marca = new TipoSangre();
+            marca.setIdtiposangre(rs.getInt(1));
+            marca.setTiposangre(rs.getString(2).toUpperCase());
+            
+            Comun.tipodesangre.add(marca);
+        }
+        
+        System.out.println(Comun.tipodesangre);
     }
     public void getMarcas()throws SQLException{   
          if(!Comun.marcas.isEmpty()){

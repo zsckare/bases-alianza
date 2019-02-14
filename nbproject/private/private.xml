@@ -3,9 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/zsckare/Documents/NetBeansProjects/BasesAlianza/src/views/consecionarios/HomeConcesionario.java</file>
+            <file>file:/C:/Users/zsckare/Documents/NetBeansProjects/BasesAlianza/src/helpers/Comun.java</file>
+            <file>file:/C:/Users/zsckare/Documents/NetBeansProjects/BasesAlianza/src/models/Titular.java</file>
             <file>file:/C:/Users/zsckare/Documents/NetBeansProjects/BasesAlianza/src/helpers/ConectionDB.java</file>
-            <file>file:/C:/Users/zsckare/Documents/NetBeansProjects/BasesAlianza/src/views/consecionarios/FormConcesionario.java</file>
+            <file>file:/C:/Users/zsckare/Documents/NetBeansProjects/BasesAlianza/src/views/taxistas/HomeTaxistas.java</file>
+            <file>file:/C:/Users/zsckare/Documents/NetBeansProjects/BasesAlianza/src/views/titulares/HomeTitulares.java</file>
+            <file>file:/C:/Users/zsckare/Documents/NetBeansProjects/BasesAlianza/src/models/Chofer.java</file>
             <file>file:/C:/Users/zsckare/Documents/NetBeansProjects/BasesAlianza/src/views/HomePage.java</file>
         </group>
     </open-files>

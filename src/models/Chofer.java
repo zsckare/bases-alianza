@@ -5,6 +5,8 @@
  */
 package models;
 
+import java.util.Comparator;
+
 /**
  *
  * @author zsckare
@@ -12,7 +14,9 @@ package models;
 public class Chofer {
     int idtaxista, idtipo,idtaxi, idtipodesangre;
     
-    String nombre, apellido, direccion, telefono, clavesindical;
+    String nombre, apellido, direccion, telefono, clavesindical  ,vehicle_number;
+    Taxi vehiculo;
+
 
     public int getIdtaxista() {
         return idtaxista;
@@ -86,10 +90,38 @@ public class Chofer {
         this.clavesindical = clavesindical;
     }
 
+    public String getVehicle_number() {
+        return vehicle_number;
+    }
+
+    public void setVehicle_number(String vehicle_number) {
+        this.vehicle_number = vehicle_number;
+    }
+
+    public Taxi getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Taxi vehiculo) {
+        this.vehiculo = vehiculo;
+    }
+
+    
     @Override
     public String toString() {
         return "Chofer{" + "idtaxista=" + idtaxista + ", idtipo=" + idtipo + ", idtaxi=" + idtaxi + ", idtipodesangre=" + idtipodesangre + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + ", telefono=" + telefono + ", clavesindical=" + clavesindical + '}';
     }
-    
+    public static Comparator<Chofer> TitualrVehicleNumner = new Comparator<Chofer>() {
+
+	public int compare(Chofer s1, Chofer s2) {
+	   String StudentName1 = s1.getVehicle_number().toUpperCase();
+	   String StudentName2 = s2.getVehicle_number().toUpperCase();
+
+	   //ascending order
+	   return StudentName1.compareTo(StudentName2);
+
+	   //descending order
+	   //return StudentName2.compareTo(StudentName1);
+    }};
     
 }

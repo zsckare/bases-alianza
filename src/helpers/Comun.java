@@ -35,4 +35,15 @@ public class Comun {
     
     public static void generatePDF(String inputHtmlPath, String outputPdfPath){
     }
+    
+    public static String getTipoSangre(int id){
+        
+        for (int i = 0; i < tipodesangre.size(); i++) {
+            
+            if(id==tipodesangre.get(i).getIdtiposangre()){
+                return tipodesangre.get(i).getTiposangre();
+            }
+        }
+        return "";
+    }
 }
