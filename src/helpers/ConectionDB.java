@@ -19,6 +19,7 @@ import models.*;
  *
  * @author zsckare
  */
+import java.util.*;
 public class ConectionDB {
 
    
@@ -116,10 +117,11 @@ public class ConectionDB {
             titular.setIdtipo(rs.getInt(6));
             titular.setClavesindical(rs.getString(8));
             titular.setVehiculo(getVehicle(rs.getInt(7)));
-            
+            titular.setVehicle_number(getVehicle(rs.getInt(7)).getNumerotaxi());
             Comun.concesionarios.add(titular);
 
         }
+        Collections.sort(Comun.concesionarios, Concesionario.TitualrVehicleNumner);
         //System.out.println(Comun.concesionarios);
             
      }    
@@ -144,9 +146,10 @@ public class ConectionDB {
             titular.setIdtipo(rs.getInt(6));
             titular.setClavesindical(rs.getString(8));
             titular.setVehiculo(getVehicle(rs.getInt(7)));
+            titular.setVehicle_number(getVehicle(rs.getInt(7)).getNumerotaxi());
             Comun.titulares.add(titular);
         }
-        
+        Collections.sort(Comun.titulares, Titular.TitualrVehicleNumner);
        // System.out.println(Comun.titulares);
      }     
     public void getTipoSangre(){        

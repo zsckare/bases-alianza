@@ -9,10 +9,20 @@ package models;
  *
  * @author zsckare
  */
-public class Titular {
+import java.util.Comparator;
+public class Titular   {
     int idduenocarro, idtipo, idtaxi;
-    String nombre, apellido, direccion, telefono, clavesindical;
+    String nombre, apellido, direccion, telefono, clavesindical, vehicle_number;
     Taxi vehiculo;
+
+    public String getVehicle_number() {
+        return vehicle_number;
+    }
+
+    public void setVehicle_number(String vehicle_number) {
+        this.vehicle_number = vehicle_number;
+    }
+    
     public int getIdduenocarro() {
         return idduenocarro;
     }
@@ -91,6 +101,21 @@ public class Titular {
     public String toString() {
         return "Titular{" + "idtitularplacas=" + idduenocarro + ", idtipo=" + idtipo + ", idtaxi=" + idtaxi + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + ", telefono=" + telefono + ", clavesindical=" + clavesindical + '}';
     }
+
+    
+    public static Comparator<Titular> TitualrVehicleNumner = new Comparator<Titular>() {
+
+	public int compare(Titular s1, Titular s2) {
+	   String StudentName1 = s1.getVehicle_number().toUpperCase();
+	   String StudentName2 = s2.getVehicle_number().toUpperCase();
+
+	   //ascending order
+	   return StudentName1.compareTo(StudentName2);
+
+	   //descending order
+	   //return StudentName2.compareTo(StudentName1);
+    }};
+   
     
     
 }

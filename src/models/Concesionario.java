@@ -5,15 +5,25 @@
  */
 package models;
 
+import java.util.Comparator;
+
 /**
  *
  * @author zsckare
  */
 public class Concesionario {
      int idtitularplacas, idtipo, idtaxi;
-    String nombre, apellido, direccion, telefono, clavesindical;
+    String nombre, apellido, direccion, telefono, clavesindical,vehicle_number;
     Taxi vehiculo;
 
+    public String getVehicle_number() {
+        return vehicle_number;
+    }
+
+    public void setVehicle_number(String vehicle_number) {
+        this.vehicle_number = vehicle_number;
+    }
+    
     public Taxi getVehiculo() {
         return vehiculo;
     }
@@ -90,6 +100,19 @@ public class Concesionario {
     public String toString() {
         return "Concesionario{" + "idtitularplacas=" + idtitularplacas + ", idtipo=" + idtipo + ", idtaxi=" + idtaxi + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + ", telefono=" + telefono + ", clavesindical=" + clavesindical + '}';
     }
+    
+    public static Comparator<Concesionario> TitualrVehicleNumner = new Comparator<Concesionario>() {
+
+	public int compare(Concesionario s1, Concesionario s2) {
+	   String StudentName1 = s1.getVehicle_number().toUpperCase();
+	   String StudentName2 = s2.getVehicle_number().toUpperCase();
+
+	   //ascending order
+	   return StudentName1.compareTo(StudentName2);
+
+	   //descending order
+	   //return StudentName2.compareTo(StudentName1);
+    }};
     
     
 }

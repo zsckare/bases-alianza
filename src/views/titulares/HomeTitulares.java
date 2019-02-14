@@ -55,7 +55,7 @@ DefaultTableModel model;
         for (int i = 0; i < Comun.titulares.size(); i++) {
             Titular t = Comun.titulares.get(i);
             System.out.println(t.toString());
-            model.addRow(new Object[]{t.getNombre(),t.getApellido(), t.getDireccion(), t.getTelefono(), t.getIdtipo(), t.getVehiculo().getNumerotaxi(), t.getClavesindical()});
+            model.addRow(new Object[]{t.getNombre(),t.getApellido(), t.getDireccion(), t.getTelefono(), t.getIdtipo(), t.getVehicle_number(), t.getClavesindical()});
             
         }
         jTable1.setModel(model);
