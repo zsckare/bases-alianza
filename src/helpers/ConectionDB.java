@@ -7,9 +7,12 @@ package helpers;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.*;
 
 /**
@@ -17,6 +20,8 @@ import models.*;
  * @author zsckare
  */
 public class ConectionDB {
+
+   
     
     Connection cn;
     public Connection connect(){
@@ -32,11 +37,13 @@ public class ConectionDB {
     }
     public void getData() throws SQLException{
         getUsers();
+        getMarcas();
+        getVehiculos();
         getChoferes();
         getTitulares();
         getConcesionaros();
-        getVehiculos();
-        getMarcas();
+        
+        
         
     }
     public void getUsers() throws SQLException{
@@ -58,6 +65,7 @@ public class ConectionDB {
         
         System.out.println(Comun.trabajadores);
         st.close();
+        
         
     }
     
@@ -85,6 +93,7 @@ public class ConectionDB {
         
         System.out.println(Comun.choferes);
         st.close();
+        
     }
     public void getConcesionaros()throws SQLException{
         String query = "SELECT * FROM titularplacas";
@@ -126,7 +135,7 @@ public class ConectionDB {
             titular.setIdtaxi(rs.getInt(7));
             titular.setIdtipo(rs.getInt(6));
             titular.setClavesindical(rs.getString(8));
-            
+            titular.setVehiculo(getVehicle(rs.getInt(7)));
             Comun.titulares.add(titular);
         }
         
@@ -175,5 +184,32 @@ public class ConectionDB {
         System.out.println(Comun.vehiculos);
         
     }
+    public void deleteInDB(int id, int bd) {
+        if(bd ==1){
+            String query = "delete from duenocarro where idduenocarro = ?";
+            PreparedStatement preparedStmt;
+            try {
+                preparedStmt = cn.prepareStatement(query);
+                preparedStmt.setInt(1, id);
+                preparedStmt.execute();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(ConectionDB.class.getName()).log(Level.SEVERE, null, ex);
+            }
+     
+        }
+        
+    }
+          
+    
+    private Taxi getVehicle(int id){
+        Taxi taxi = new Taxi();
+        for (int i = 0; i < Comun.vehiculos.size(); i++) {
+            if (Comun.vehiculos.get(i).getIdtaxi()==id){
+                return Comun.vehiculos.get(i);
+            }
             
+        }
+        return taxi;
+    }
 }

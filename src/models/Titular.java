@@ -12,7 +12,7 @@ package models;
 public class Titular {
     int idduenocarro, idtipo, idtaxi;
     String nombre, apellido, direccion, telefono, clavesindical;
-
+    Taxi vehiculo;
     public int getIdduenocarro() {
         return idduenocarro;
     }
@@ -78,6 +78,15 @@ public class Titular {
         this.clavesindical = clavesindical;
     }
 
+    public Taxi getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Taxi vehiculo) {
+        this.vehiculo = vehiculo;
+    }
+
+    
     @Override
     public String toString() {
         return "Titular{" + "idtitularplacas=" + idduenocarro + ", idtipo=" + idtipo + ", idtaxi=" + idtaxi + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + ", telefono=" + telefono + ", clavesindical=" + clavesindical + '}';
