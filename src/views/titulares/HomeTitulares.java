@@ -5,19 +5,54 @@
  */
 package views.titulares;
 
+import helpers.Comun;
+import javax.swing.table.DefaultTableModel;
+import models.Titular;
+
 /**
  *
  * @author zsckare
  */
 public class HomeTitulares extends javax.swing.JFrame {
-
+DefaultTableModel model;
     /**
      * Creates new form HomeTitulares
      */
     public HomeTitulares() {
         initComponents();
+        
+        model = new DefaultTableModel();
+        jTable1.setModel(model);
+        model.addColumn("Nombre");
+        model.addColumn("Apelido");
+        model.addColumn("Direccion");
+        model.addColumn("Telefono");
+        model.addColumn("Tipo de Sangre");
+        model.addColumn("Vehiculo");
+        model.addColumn("Clave Sindical");
+        this.setTitle("Lista de Marcas");
+        setData();
     }
 
+     private void setData() {
+        int filas = model.getRowCount();
+        System.out.println(filas);
+        if(filas> 0){
+            System.out.print("Remover filas");
+            for (int i = 0; i < model.getRowCount(); i++) {
+                model.removeRow(1);
+                
+            }
+            jTable1.setModel(model);
+        }
+        for (int i = 0; i < Comun.titulares.size(); i++) {
+            Titular t = Comun.titulares.get(i);
+            System.out.println(t.toString());
+            model.addRow(new Object[]{t.getNombre(),t.getApellido(), t.getDireccion(), t.getTelefono(), t.getIdtipo(), t.getVehiculo().getNumerotaxi(), t.getClavesindical()});
+            
+        }
+        jTable1.setModel(model);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,6 +90,9 @@ public class HomeTitulares extends javax.swing.JFrame {
         jButton1.setText("Buscar");
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/print.png"))); // NOI18N
+        jButton2.setMaximumSize(new java.awt.Dimension(69, 23));
+        jButton2.setMinimumSize(new java.awt.Dimension(69, 23));
+        jButton2.setPreferredSize(new java.awt.Dimension(69, 23));
 
         jButton3.setText("Eliminar");
 
@@ -74,14 +112,14 @@ public class HomeTitulares extends javax.swing.JFrame {
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                         .addComponent(jButton5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)))
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -92,7 +130,7 @@ public class HomeTitulares extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3)
                     .addComponent(jButton4)
                     .addComponent(jButton5))
